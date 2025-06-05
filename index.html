@@ -1,3 +1,1468 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f2192d98a4997bb2d6aa886e9e9989f2c993476757f844c5b87a064e6722d171
-size 71101
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Game Project - Personal Interest Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .process-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .process-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .process-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .process-card li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .process-card li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8rem;
+        }
+
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .competency-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid #e53e3e;
+            transition: transform 0.3s ease;
+        }
+
+        .competency-card:hover {
+            transform: scale(1.02);
+        }
+
+        .competency-card h4 {
+            color: #e53e3e;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .video-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-button.active {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        }
+
+        .youtube-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .documentation-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        }
+
+        .tab-content {
+            display: none;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 2px dashed #667eea;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .placeholder {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 2rem;
+        }
+
+        .links-carousel {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem 0;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.3s ease;
+            gap: 1rem;
+        }
+
+        .link-card {
+            min-width: 320px;
+            max-width: 380px;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #667eea;
+            flex-shrink: 0;
+        }
+
+        .link-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .link-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .link-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .link-card a:hover {
+            color: #764ba2;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .carousel-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #667eea;
+        }
+
+        .tutorial-stats {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .game-showcase {
+            text-align: center;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+
+        .game-placeholder {
+            background: #333;
+            border-radius: 12px;
+            padding: 4rem 2rem;
+            color: white;
+            margin: 2rem 0;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-placeholder {
+            background: linear-gradient(45deg, #333 25%, transparent 25%), 
+                        linear-gradient(-45deg, #333 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #333 75%), 
+                        linear-gradient(-45deg, transparent 75%, #333 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            background-color: #444;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            border-radius: 12px;
+            border: 2px dashed #666;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Development Progress Accordion Styling */
+        .accordion-item {
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: linear-gradient(135deg, #f0f4ff 0%, #d9e2ff 100%);
+            padding: 1rem 1.5rem;
+            width: 100%;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #e0e8ff 0%, #c8d7ff 100%);
+        }
+
+        .accordion-header h4 {
+            margin: 0;
+            color: #667eea;
+        }
+
+        .accordion-content {
+            padding: 1rem 1.5rem;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+            display: none; /* Hidden by default */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .accordion-content li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dotted #e0e0e0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .accordion-content li:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .process-grid,
+            .competencies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .documentation-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">My Unity Game Project</div>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#process">Development Process</a></li>
+                <li><a href="#competencies">Global Competencies</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Unity Game Development Project</h1>
+            <p>A comprehensive showcase of my personal interest course project, demonstrating game development skills and meeting global competency standards.</p>
+        </section>
+
+        <section id="overview" class="section">
+            <h2>Project Overview</h2>
+            <div class="game-showcase">
+                <h3>🎮 Personal Interest Project</h3>
+                
+                <div class="video-container">
+                    <video controls poster="images/game-thumbnail.png">
+                        <source src="videos/FINAL.mp4" type="video/mp4">
+                        <source src="videos/FINAL.mp4" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <p style="margin-top: 2rem;">
+                    <strong>Course:</strong> Personal Interest Course<br>
+                    <strong>Duration:</strong> February 10th - May 30th, 2025 (Weekdays)<br>
+                    <strong>Tools Used:</strong> Unity, C#, Aseprite
+                </p>
+            </div>
+        </section>
+
+        <section id="process" class="section">
+            <h2>Development Process</h2>
+            <div class="process-grid">
+                <div class="process-card">
+                    <h3>1. Planning & Research</h3>
+                    <ul>
+                        <li>Game concept development</li>
+                        <li>Target audience analysis</li>
+                        <li>Technical requirements research</li>
+                        <li>Similar games analysis</li>
+                    </ul>
+                </div>
+                <div class="process-card">
+                    <h3>2. Design & Art Creation</h3>
+                    <ul>
+                        <li>Game mechanics design</li>
+                        <li>Pixel art creation in Aseprite</li>
+                        <li>Sprite animations and character design</li>
+                        <li>User interface mockups</li>
+                        <li>Level design concepts</li>
+                    </ul>
+                </div>
+                <div class="process-card">
+                    <h3>3. Development & Implementation</h3>
+                    <ul>
+                        <li>Core gameplay programming in C#</li>
+                        <li>Sprite integration from Aseprite</li>
+                        <li>Animation system implementation</li>
+                        <li>User interface development</li>
+                        <li>Bug testing and fixes</li>
+                    </ul>
+                </div>
+                <div class="process-card">
+                    <h3>4. Testing & Polish</h3>
+                    <ul>
+                        <li>Gameplay testing sessions</li>
+                        <li>Performance optimization</li>
+                        <li>User feedback integration</li>
+                        <li>Final polish and presentation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="competencies" class="section">
+            <h2>Global Competencies Demonstrated</h2>
+            <div class="competencies-grid">
+                <div class="competency-card">
+                    <h4>Critical Thinking</h4>
+                    <p>Analyzed game design problems and developed creative solutions for gameplay mechanics and user experience challenges.</p>
+                </div>
+                <div class="competency-card">
+                    <h4>Creativity & Innovation</h4>
+                    <p>Designed original game concepts and implemented unique features that showcase creative problem-solving abilities.</p>
+                </div>
+                <div class="competency-card">
+                    <h4>Communication</h4>
+                    <p>Documented development process and presented project findings clearly to demonstrate learning outcomes.</p>
+                </div>
+                <div class="competency-card">
+                    <h4>Collaboration</h4>
+                    <p>Utilized community resources, gathered feedback, and incorporated suggestions to improve the project.</p>
+                </div>
+                <div class="competency-card">
+                    <h4>Digital Citizenship</h4>
+                    <p>Demonstrated responsible use of technology tools and followed ethical practices in game development.</p>
+                </div>
+                <div class="competency-card">
+                    <h4>Self-Directed Learning</h4>
+                    <p>Independently learned Unity and C# programming concepts to complete the project successfully.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="documentation" class="section">
+            <h2>Project Documentation</h2>
+            <div class="documentation-tabs">
+                <button class="tab-button active" onclick="showTab('research')">Research</button>
+                <button class="tab-button" onclick="showTab('development')">Development Logs</button>
+                <button class="tab-button" onclick="showTab('assets')">Assets & Resources</button>
+                <button class="tab-button" onclick="showTab('reflection')">Reflection</button>
+            </div>
+
+            <div id="research" class="tab-content active">
+                <h3>Research Documentation</h3>
+                <div class="tutorial-stats">
+                    📚 Tutorial Collection: <span id="tutorial-count">0</span> resources found
+                </div>
+                
+                <div class="links-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="carousel-track">
+                            </div>
+                    </div>
+                    
+                    <div class="carousel-nav">
+                        <button class="carousel-btn" id="prev-btn" onclick="moveCarousel(-1)">‹</button>
+                        <div class="carousel-dots" id="carousel-dots"></div>
+                        <button class="carousel-btn" id="next-btn" onclick="moveCarousel(1)">›</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="development" class="tab-content">
+                <h3>Development Progress</h3>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week One: Feb 10 - Feb 14, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Feb 10 (Mon):</strong> Defining the ideas of the game: I want to make a platformer, which would be the genre of the game. I also want it to be a steampunk themed platformer (enables me to have tons of interesting creative choices to be made).</p></li>
+                                <li><p><strong>Feb 11 (Tue):</strong> Setting up Unity (Buncha boring file creating).</p></li>
+                                <li><p><strong>Feb 12 (Wed):</strong> Setting up Visual Studio Code (not quite as long and boring as Unity, but about the same besides the fact that I get all the files from in the app instead).</p></li>
+                                <li><p><strong>Feb 13 (Thu):</strong> Setting up the game inside of Unity – I setup the different folders to actually have basic shells of scripts and things I might need in the future of the development.</p></li>
+                                <li><p><strong>Feb 14 (Fri):</strong> Setting up the game inside Unity more – I setup the very start of the background and foreground basics as well as a basic player imported (all from online sprites [these are just filler stuff]).</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week Two: Feb 17 - Feb 21, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Feb 17 (Mon):</strong> Learning about how to setup my own physics for jumps.</p></li>
+                                <li><p><strong>Feb 18 (Tue):</strong> Continuing to try and make my own physics, adding to the physical game engine a few attempts at creating some.</p></li>
+                                <li><p><strong>Feb 19 (Wed):</strong> Basic custom jump down (expecting lots of micro adjustments).</p></li>
+                                <li><p><strong>Feb 20 (Thu):</strong> Movement & camera attempts.</p></li>
+                                <li><p><strong>Feb 21 (Fri):</strong> A basic movement camera and jump down in a small test area.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week Three: Feb 24 - Feb 28, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Feb 24 (Mon):</strong> Drawing board for win/loss objectives. Drawing board for levels as well.</p></li>
+                                <li><p><strong>Feb 25 (Tue):</strong> Drew a basic design for first level inspired by Celeste's level design.</p></li>
+                                <li><p><strong>Feb 26 (Wed):</strong> Win loss objectives should be getting past the screen/level you are currently at & loss would be failing that objective. (by either falling on traps or into the void or something).</p></li>
+                                <li><p><strong>Feb 27 (Thu):</strong> First testing area loop fully fleshed out (went ahead a little and added effects!).</p></li>
+                                <li><p><strong>Feb 28 (Fri):</strong> Went back on camera testing and changed it around a bit; added even more effects into the player movements and started on new player movements inspired by Celeste's ghost after images.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week Four: Mar 3 - Mar 7, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Mar 3 (Mon):</strong> Swapped the player model from a knight to a little robot (not sure if that’s permanent) also restarted a lot of the scripting and went back on a few design choices. Not total loss though! Taking the knowledge of what I have from the last test area I made a quick new one that I am expanding.</p></li>
+                                <li><p><strong>Mar 4 (Tue):</strong> Animations are going well! I learned a lot and managed to get a good transition between idle and walk animation.</p></li>
+                                <li><p><strong>Mar 5 (Wed):</strong> Hunkering down for the week and learning to fully implement these animations into my code.</p></li>
+                                <li><p><strong>Mar 6 (Thu):</strong> Rewriting and creating new scripts to better suit animation.</p></li>
+                                <li><p><strong>Mar 7 (Fri):</strong> Finally got some decent animation for the actions I have so far; want to continue working on the ghost after images for a dash.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week Five: Mar 10 - Mar 14, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Mar 10 (Mon):</strong> Skipping over the original plan of implementing a main menu and a pause menu this week; I want to continue polishing controls and add I am still figuring out the effects for the ghost after images.</p></li>
+                                <li><p><strong>Mar 11 (Tue):</strong> Found a package that allows me to Implement ripple effects into the camera easily (dashing looks a lot cleaner and cooler now).</p></li>
+                                <li><p><strong>Mar 12 (Wed):</strong> Managed to somewhat get a dash, now for the aftereffects.</p></li>
+                                <li><p><strong>Mar 13 (Thu):</strong> Finally thought I understood and then came to realize that there’s a package I can implement that makes my life a whole lot easier even if I don’t fully understand it yet.</p></li>
+                                <li><p><strong>Mar 14 (Fri):</strong> Made the dash! After effects look super cool and it is almost exactly what I wanted (still small movement things that need fixing).</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week Six: Mar 17 - Mar 21, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Mar 17 (Mon):</strong> Sound effects and basic music may be slightly overlooked this week; but not for long because I can implement that a lot easier than other things I believe. For now, working on the visual feedback some more (animations and effects).</p></li>
+                                <li><p><strong>Mar 18 (Tue):</strong> Improved player environment interaction a lot (added a wall climb that I will be fixing throughout the week most likely).</p></li>
+                                <li><p><strong>Mar 19 (Wed):</strong> Wall slide/climb fully finished and just needs polishing; animations and everything are smooth for now, but corners don’t seem to agree with the player hitbox.</p></li>
+                                <li><p><strong>Mar 20 (Thu):</strong> Still trying to fix player hitbox issues; might need to redo them.</p></li>
+                                <li><p><strong>Mar 21 (Fri):</strong> Researching solutions today, also prepping for presentation.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of April 2 - April 4, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Apr 2 (Wed):</strong> Continued UI design for the Options Menu I started, focusing on layout for graphics settings.</p></li>
+                                <li><p><strong>Apr 4 (Fri):</strong> Scripted basic functionality for the display mode dropdown in the options menu.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of April 7 - April 10, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Apr 7 (Mon):</strong> Implemented resolution detection and resolution dropdown.</p></li>
+                                <li><p><strong>Apr 8 (Tue):</strong> Began work on applying the selected resolution changes.</p></li>
+                                <li><p><strong>Apr 9 (Wed):</strong> Started scripting the quality level dropdown functionality.</p></li>
+                                <li><p><strong>Apr 10 (Thu):</strong> Initial implementation of applying quality level settings.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of April 15 - April 17, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Apr 15 (Tue):</strong> Testing basic functionality of the graphics settings UI.</p></li>
+                                <li><p><strong>Apr 16 (Wed):</strong> Minor adjustments and bug fixes for the graphics settings UI.</p></li>
+                                <li><p><strong>Apr 17 (Thu):</strong> Integrated saving and loading of graphics settings using PlayerPrefs.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of April 22 - April 24, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Apr 22 (Tue):</strong> Further testing of saving and loading graphics settings across game sessions.</p></li>
+                                <li><p><strong>Apr 23 (Wed):</strong> Began implementation of tutorial HUD UI elements.</p></li>
+                                <li><p><strong>Apr 24 (Thu):</strong> Basic layout and styling of the tutorial HUD.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of April 28 - April 30, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>Apr 28 (Mon):</strong> Started scripting the logic for displaying tutorial messages.</p></li>
+                                <li><p><strong>Apr 29 (Tue):</strong> Initial attempt at a message queueing system for the tutorial HUD.</p></li>
+                                <li><p><strong>Apr 30 (Wed):</strong> Continued work on the tutorial HUD message queue and display logic.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of May 1, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>May 1 (Thu):</strong> Project corrupted; will try to figure out what the backup does and doesn’t have.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of May 5 - May 9, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>May 5 (Mon):</strong> UI reconstruction today – options menu (recreating all the sliders etc).</p></li>
+                                <li><p><strong>May 6 (Tue):</strong> Main menu and linking between the different UI elements is what I focused on today.</p></li>
+                                <li><p><strong>May 7 (Wed):</strong> Script relinking and testing / last minute presentation prep.</p></li>
+                                <li><p><strong>May 8 (Thu):</strong> Presentation Day.</p></li>
+                                <li><p><strong>May 9 (Fri):</strong> Encountered 'AudioSource to AudioClip' error during chip integration.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of May 12 - May 16, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>May 12 (Mon):</strong> Fixed audio variable declaration; identified chip trigger not firing.</p></li>
+                                <li><p><strong>May 13 (Tue):</strong> Corrected chip collider 'Is Trigger' setting; confirmed trigger events now firing.</p></li>
+                                <li><p><strong>May 14 (Wed):</strong> Debug logs confirm code execution, but no visual/audio effects present.</p></li>
+                                <li><p><strong>May 15 (Thu):</strong> Assigned Particle Systems for chip effects in Inspector.</p></li>
+                                <li><p><strong>May 16 (Fri):</strong> Assigned Audio Clip and Level Transition Image in Inspector.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of May 19 - May 23, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>May 19 (Mon):</strong> Troubleshooting level transition; suspected incorrect UI Image Type.</p></li>
+                                <li><p><strong>May 20 (Tue):</strong> Fixed UI Image Type to 'Filled'; identified next level not loading issue.</p></li>
+                                <li><p><strong>May 21 (Wed):</strong> Added next scene to Build Settings, core chip functionality now complete.</p></li>
+                                <li><p><strong>May 22 (Thu):</strong> Conducted comprehensive testing of Level End Chip mechanics.</p></li>
+                                <li><p><strong>May 23 (Fri):</strong> Noted absence of previous ambient chip animation.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Week of May 26 - May 30, 2025</h4>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><p><strong>May 26 (Mon):</strong> Began planning re-implementation of chip's ambient float animation.</p></li>
+                                <li><p><strong>May 27 (Tue):</strong> Successfully re-implemented chip's ambient floating animation with DOTween.</p></li>
+                                <li><p><strong>May 28 (Wed):</strong> Tested and debugged new ambient animation for chip.</p></li>
+                                <li><p><strong>May 29 (Thu):</strong> Performed final polish on particle effects and transition timing.</p></li>
+                                <li><p><strong>May 30 (Fri):</strong> Completed final review; Level End Chip component is fully functional.</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="assets" class="tab-content">
+                <h3>Assets & Resources</h3>
+                <p>This section details the custom-made assets and external resources utilized in the development of the game.</p>
+
+                <h4>🎨 Custom Pixel Art (Aseprite Files & Spritesheets)</h4>
+                <div class="asset-category">
+                    <p>All character sprites, environmental tiles, and UI elements were designed and animated in Aseprite. The raw Aseprite files (.aseprite) and exported spritesheets (.png) are available below.</p>
+                    <ul>
+                        <li>
+                            <strong>Player Character Sprites:</strong>
+                            <ul>
+                                <li><a href="assets/sprites/Player.png" target="_blank">Player Spritesheet (PNG)</a> - Contains all animations for the main character.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Environmental Tilesets:</strong>
+                            <ul>
+                                <li><a href="assets/sprites/Tileset.png" target="_blank">Tileset (PNG)</a> - The primary tileset for environmental elements.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>UI Elements:</strong>
+                            <ul>
+                                <li><a href="assets/sprites/UI.png" target="_blank">UI Image (PNG)</a> - Main UI elements and icons.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h4>📦 Unity Assets & Packages</h4>
+                <div class="asset-category">
+                    <p>A list of significant Unity assets, custom scripts, and third-party packages used in the project.</p>
+                    <ul>
+                        <li>
+                            <strong>Third-Party Unity Packages:</strong>
+                            <ul>
+                                <li><a href="https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676" target="_blank" rel="noopener noreferrer">DOTween (HOTween v2)</a> - Used for smooth animations and transitions.</li>
+                                <li>Cinemachine - For dynamic camera control (built-in Unity package).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h4>🔗 External Resources & Attributions</h4>
+                <div class="asset-category">
+                    <p>Resources sourced externally with proper attribution.</p>
+                    <ul>
+                        <li>
+                            <strong>Natekling Assets:</strong>
+                            <p>Some initial character concepts and animation inspiration derived from Natekling's assets and tutorials.</p>
+                            <a href="https://drive.google.com/file/d/1hNrC1vZqzQ7fjO3Q1qFxWe0PERl8dXDs/view" target="_blank" rel="noopener noreferrer">Natekling Pixel art and animation assets</a>
+                        </li>
+                        <li>
+                            <strong>Craftpix Assets:</strong>
+                            <p>Craftpix tile sets/assets (graffiti) 32x32.</p>
+                            <a href="https://craftpix.net/freebies/free-graffiti-constructor-pixel-art/" target="_blank" rel="noopener noreferrer">Free Graffiti Constructor Pixel Art</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="reflection" class="tab-content">
+                <h3>Project Reflection</h3>
+                
+                <h4>Learning Journey & Key Takeaways</h4>
+                <p>This project was a significant learning experience, pushing me to independently explore and master various aspects of game development. I started with a basic understanding of programming and ended with a functional 2D platformer, a testament to self-directed learning and continuous problem-solving.</p>
+                <ul>
+                    <li><strong>Specific skills learned:</strong> I gained extensive experience in C# scripting for game logic, including player movement, animation states, and UI interactions. I learned to effectively use Unity's built-in physics system and how to manipulate it for custom jump behaviors. Furthermore, I became proficient in pixel art creation and animation using Aseprite, translating static designs into lively character and environmental sprites. I also learned to integrate and utilize Unity packages like DOTween for creating smooth, visually appealing transitions and animations.</li>
+                    <li><strong>Concepts grasped:</strong> I developed a strong understanding of the game loop and how various game elements interact within it. I delved into the intricacies of custom movement implementations versus relying solely on Unity's physics engine, understanding the trade-offs and benefits of each. The project also introduced me to basic UI/UX design principles as I built and refined the options and tutorial menus.</li>
+                    <li><strong>Unexpected discoveries:</strong> One surprising discovery was the complexity of seemingly simple features, such as implementing a robust wall climb/slide mechanic or ensuring consistent player hitbox interactions with different environments. I also realized the critical importance of regular version control and robust backup strategies after experiencing project corruption.</li>
+                </ul>
+
+                <h4>Challenges Faced & Solutions Implemented</h4>
+                <p>Throughout the development, I encountered several challenges that tested my problem-solving skills, ultimately leading to a more resilient and refined project.</p>
+                <ul>
+                    <li><strong>Major technical hurdles:</strong>
+                        <ul>
+                            <li><strong>Custom Physics and Player Movement:</strong> Initially, creating a custom jump and movement system that felt responsive and natural was a significant hurdle (Week Two, Week Three). I struggled with inconsistent jump heights and awkward movements.
+                                <em>Solution:</em> I researched various platformer physics tutorials (e.g., "Improve your Platformer’s Jump (and Wall Jump) | Unity", "Math for Game Programmers: Building a Better Jump"), experimented with different force applications, and iteratively fine-tuned parameters until the movement felt fluid. I also looked into how established platformers like Celeste handle their physics.</li>
+                            <li><strong>Animation Integration:</strong> Integrating pixel art animations from Aseprite into Unity and ensuring smooth transitions between states (idle, walk, jump, dash) proved challenging (Week Four).
+                                <em>Solution:</em> I spent considerable time learning Unity's Animator component, researching best practices for 2D animation controllers, and creating new scripts to manage animation states based on player input and actions.</li>
+                            <li><strong>Project Corruption:</strong> The project corruption in the "Week of May 1, 2025" was a major setback.
+                                <em>Solution:</em> I relied heavily on my last working backup, meticulously comparing files to identify what was lost and systematically rebuilding the affected parts, particularly the UI elements and script linkages (Week of May 5 - May 9). This experience highlighted the need for more frequent and disciplined backups.</li>
+                            <li><strong>Level End Chip Functionality:</strong> Integrating the level end chip, including audio, particle effects, and scene transitions, presented multiple debugging challenges (Week of May 12 - May 16, Week of May 19 - May 23).
+                                <em>Solution:</em> I systematically debugged the issue by checking variable declarations, collider settings, and build settings. I used debug logs to confirm code execution and meticulously assigned all required components (Particle Systems, Audio Clips, UI Images) in the Unity Inspector.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Design challenges:</strong> Designing intuitive levels that gradually introduced mechanics while maintaining engagement was tricky. I drew inspiration from games like Celeste for level flow. Creating visually appealing pixel art that fit the steampunk theme and ensuring consistent scaling across different resolutions were also ongoing considerations.</li>
+                    <li><strong>How you overcame them:</strong> My primary method for overcoming challenges was iterative development, coupled with extensive research. I utilized online tutorials, Unity documentation, and community forums to understand concepts and troubleshoot issues. I broke down complex problems into smaller, manageable tasks and tested frequently. Gathering feedback, even informal, also helped refine gameplay.</li>
+                    <li><strong>What you would do differently:</strong> If I faced the project corruption again, I would implement more frequent and robust version control practices from the start, such as using Git more diligently for smaller, more frequent commits. I would also establish a clearer testing protocol earlier in the development cycle to catch bugs before they compound.</li>
+                </ul>
+
+                <h4>Successes & Accomplishments</h4>
+                <p>Despite the challenges, I achieved several key successes that I am particularly proud of, showcasing my growth as a game developer.</p>
+                <ul>
+                    <li><strong>Favorite features:</strong> I am most satisfied with the player character's movement and dash mechanics. The implementation of custom physics for the jump and the visual aftereffects for the dash (Week Five) made the character feel responsive and fun to control. The level end chip's visual and audio feedback, combined with the smooth transition using DOTween (Week of May 26 - May 30), also turned out very well.</li>
+                    <li><strong>Personal milestones:</strong> Successfully implementing the core player movement (jump, run, wall slide/climb) was a major milestone. Getting the UI systems (options menu, tutorial HUD) to function correctly after the project corruption was also a significant achievement. Creating my own pixel art assets in Aseprite and seeing them come to life in Unity was incredibly rewarding.</li>
+                    <li><strong>Meeting project goals:</strong> I successfully developed a functional 2D platformer demonstrating key game development principles and showcasing my ability to learn and apply new technologies. The project effectively demonstrates my understanding of game design, programming, and asset integration, aligning with the objectives of a personal interest course.</li>
+                </ul>
+
+                <h4>Future Improvements & Iterations</h4>
+                <p>This project serves as a strong foundation, and there are many avenues for future expansion and refinement.</p>
+                <ul>
+                    <li><strong>Next steps for the game:</strong>
+                        <ul>
+                            <li><strong>More Levels and Mechanics:</strong> I would design and implement more diverse levels, introducing new traps, enemies, and interactive environmental elements to increase gameplay variety.</li>
+                            <li><strong>Sound Design Polish:</strong> While basic audio is present, a dedicated pass for more dynamic sound effects and a more engaging background music system would significantly enhance the player experience.</li>
+                            <li><strong>Additional Player Abilities:</strong> Implementing new player abilities, such as a double jump, different types of dashes, or even basic combat mechanics, would add depth.</li>
+                            <li><strong>Main Menu and Pause Menu:</strong> Fully fleshing out a robust main menu with level selection and a pause menu with comprehensive options (beyond graphics settings) would improve usability.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Skills to further develop:</strong> I aim to deepen my understanding of advanced C# scripting patterns for cleaner and more modular code, explore more complex animation systems, and delve into performance optimization techniques for Unity games. I also want to learn more about game analytics to better understand player behavior and further refine game design.</li>
+                    <li><strong>Refined processes:</strong> Based on this experience, I would dedicate more time to pre-production planning and prototyping, especially for core mechanics, to minimize rework. I would also seek user feedback earlier and more frequently throughout the development cycle to guide design decisions and ensure a more engaging player experience.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Unity Game Project. Created for Personal Interest Course.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tutorial Links Array - Add your links here!
+        const tutorialLinks = [
+            {
+                title: "Unity 2D Platformer Tutorial",
+                description: "Complete tutorial series covering player movement, jumping, and collision detection for 2D platformers.",
+                url: "https://www.youtube.com/watch?v=UbPiCgCkHTE",
+                source: "Brackeys"
+            },
+            {
+                title: "Aseprite Animation Basics",
+                description: "Learn the fundamentals of creating smooth pixel art animations in Aseprite.",
+                url: "https://www.aseprite.org/docs/animation/",
+                source: "Aseprite Docs"
+            },
+            {
+                title: "C# Programming for Unity",
+                description: "Essential C# concepts specifically for Unity game development, covering variables, functions, and classes.",
+                url: "https://learn.unity.com/tutorial/beginner-gameplay-scripting",
+                source: "Unity Learn"
+            },
+            {
+                title: "Unity Input System Guide",
+                description: "Modern input handling in Unity using the new Input System package for responsive controls.",
+                url: "https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/index.html",
+                source: "Unity Documentation"
+            },
+            {
+                title: "Pixel Art Color Theory",
+                description: "Understanding color palettes and shading techniques for creating appealing pixel art graphics.",
+                url: "https://lospec.com/pixel-art-tutorials",
+                source: "Lospec"
+            },
+            {
+                title: "Improve your Platformer’s Jump (and Wall Jump) | Unity",
+                description: "Tips and tricks you can use to improve your jump and unity 2D movement",
+                url: "https://www.youtube.com/watch?v=2S3g8CgBG1g&t=193s",
+                source: "Dawnosaur"
+            },
+            {
+                title: "How to Make a Camera System (Like Hollow Knight's) in Unity using Cinemachine | 2D Tutorial",
+                description: "In this Unity tutorial, re-create Hollow Knight's camera system using Unity and Cinemachine.",
+                url: "https://www.youtube.com/watch?v=9dzBrLUIF8g",
+                source: "Sasquatch B Studios"
+            },
+            {
+                title: "Why Slopes are Shockingly Difficult for Indie Game Devs",
+                description: "Why slopes are difficult & How you Might Need to Make Sacrifices",
+                url: "https://www.youtube.com/watch?v=rHMJccb5IOM",
+                source: "Inbound Shovel"
+            },
+            {
+                title: "How to deal with SLOPES! in Unity 2D using built in Physics",
+                description: "A good simple way to handle slopes that does not require custom physics",
+                url: "https://www.youtube.com/watch?app=desktop&v=QPiZSTEuZnw",
+                source: "Bardent"
+            },
+            {
+                title: "Why Does Celeste Feel So Good to Play?",
+                description: "In this video, let’s look at how designers Maddy Thorson (Matt at the time of recording the video) and Noel Berry made the hero of Celeste feel so good to play.",
+                url: "https://www.youtube.com/watch?v=yorTG9at90g",
+                source: "Game Maker's Toolkit"
+            },
+            {
+                title: "Celestes source code",
+                description: "The Source Code of Celeste; A Major Platformer.",
+                url: "https://github.com/NoelFB/Celeste/blob/master/Source/Player/Player.cs",
+                source: "NoelFB"
+            },
+            {
+                title: "Celeste & TowerFall Physics",
+                description: "Celeste programmers (of the two) website explaining towerfall physics",
+                url: "https://maddymakesgames.com/articles/celeste_and_towerfall_physics/index.html",
+                source: "MADDYMAKESGAMES"
+            },
+            {
+                title: "Celeste & Forgiveness",
+                description: "Celeste programer blog on forgiveness",
+                url: "https://maddythorson.medium.com/celeste-forgiveness-31e4a40399f1",
+                source: "Maddy Thorson"
+            },
+            {
+                title: "Math for Game Programmers: Building a Better Jump",
+                description: "How to construct natural-feeling jump trajectories from designer-friendly input like desired height and distance",
+                url: "https://www.youtube.com/watch?v=hG9SzQxaCm8&t=313s",
+                source: "Game Developers Conference"
+            },
+            {
+                title: "What kind of math should game developers know?",
+                description: "Math is important for game developers, but how much math do you really need?",
+                url: "https://www.youtube.com/watch?v=eRVRioN4GwA",
+                source: "SimonDev"
+            },
+            {
+                title: "When Optimisations Work, But for the Wrong Reasons",
+                description: "Level of detail and imposters are effective optimizations that work for reasons you may not fully understand.",
+                url: "https://www.youtube.com/watch?v=hf27qsQPRLQ",
+                source: "SimonDev"
+            },
+            {
+                title: "Improve Your Platformer with Forces | Examples in Unity",
+                description: "Want to make your character feel fluid and responsive to control? Use these tips and tricks to improve your platformer in any Engine or Language.",
+                url: "https://www.youtube.com/watch?v=KbtcEVCM7bw",
+                source: "Dawnosaur"
+            },
+            {
+                title: "Dust Effect when Running & Jumping in Unity [Particle Effect]",
+                description: "In this video we re-create the dust trail effect from games like Super Mario World and Celeste",
+                url: "https://www.youtube.com/watch?v=1CXVbCbqKyg",
+                source: "Press Start"
+            },
+            {
+                title: "Ultimate 2D Platformer Controller in Unity (source code provided)",
+                description: "Learn how to build an amazing player controller.",
+                url: "https://www.youtube.com/watch?v=3sWTzMsmdx8&ab_channel=Tarodev",
+                source: "Tarodev"
+            },
+            {
+                title: "ALL THE WAYS you can animate your 2D characters in Unity (Beginner Tutorial)",
+                description: "After you've gone through this video you'll know ALL the ways you can animate your 2D characters in Unity, as well as the pros and cons between each method",
+                url: "https://www.youtube.com/watch?v=IXwEsV8yXk4&ab_channel=SasquatchBStudios",
+                source: "Sasquatch B Studios"
+            },
+            {
+                title: "Jump Arcs",
+                description: "A Video Essay On Jump Arcs",
+                url: "https://www.youtube.com/watch?v=R1jFEMxGPzk",
+                source: "Leon Massey"
+            },
+            {
+                title: "Unity 2D Player RESPAWN Tutorial | Unity 2D Platformer Tutorial #8",
+                description: "In this Unity 2D tutorial we'll do player RESPAWN System",
+                url: "https://www.youtube.com/watch?v=odStG_LfPMQ",
+                source: "Rehope Games"
+            },
+            {
+                title: "Craftpix Assets",
+                description: "craftpix tile sets/assets (graffiti) 32x32",
+                url: "https://craftpix.net/freebies/free-graffiti-constructor-pixel-art/",
+                source: "Craftpix"
+            },
+            {
+                title: "1 Year of Learning Game Development In 6 Minutes",
+                description: "I spent almost 1 Year learning game development in Unity, with no prior experience, and here's the entire progress in 6 minutes!",
+                url: "https://www.youtube.com/watch?v=_tE4phLuGyA",
+                source: "Giedzilla"
+            },
+            {
+                title: "Platformer-Movement",
+                description: "Script examples of adaptations and mashups of different game machanics from platformers.",
+                url: "https://github.com/DawnosaurDev/platformer-movement/tree/main/Scripts",
+                source: "DawnosaurDev"
+            },
+            {
+                title: "How to jump in Unity (with or without physics)",
+                description: "Learn how to make an object jump in Unity with or without using physics.",
+                url: "https://www.youtube.com/watch?v=c9kxUvCKhwQ&t=448s",
+                source: "Game Dev Beginner"
+            },
+            {
+                title: "Rigidbody2D.MovePosition",
+                description: "Rigidbody2D official unity stuff.",
+                url: "https://docs.unity3d.com/ScriptReference/Rigidbody2D.MovePosition.html",
+                source: "Unity Documentation"
+            },
+            {
+                title: "Neoseeker",
+                description: "Level designs of celestes Area 1",
+                url: "https://www.neoseeker.com/celeste/walkthrough/Level_1_-_Forsaken_City",
+                source: "Neo Era Media Inc."
+            },
+            {
+                title: "The Award-Winning Level Design in Celeste",
+                description: "An analysis of level design in 2D video games",
+                url: "https://medium.com/@josephdiamond115/the-award-winning-level-design-in-celeste-c2acb315bf79",
+                source: "Joseph Diamond"
+            },
+            {
+                title: "Natekling Pixel art and animation assets",
+                description: "Assets",
+                url: "https://drive.google.com/file/d/1hNrC1vZqzQ7fjO3Q1qFxWe0PERl8dXDs/view",
+                source: "Natekling"
+            },
+            {
+                title: "How to make a good platforming character (Developing 6)",
+                description: "The step-by-step process of making my first video game: Mind Over Magnet!",
+                url: "https://www.youtube.com/watch?v=ep_9RtAbwog&ab_channel=GameMaker%27sToolkit",
+                source: "Natekling"
+            },
+            {
+                title: "A perfect jump in unity - A complete guide",
+                description: "In this video we show you how to setup perfect Mario-like jumping in Unity.",
+                url: "https://www.youtube.com/watch?v=RPdn3r_tqcM&ab_channel=PressStart",
+                source: "Press Start"
+            },
+            {
+                title: "Forum asking for help on a player and moving platform",
+                description: "(Making sure the player maintains the velocity of the moving platform so they don't slide off)",
+                url: "https://discussions.unity.com/t/getting-the-player-to-move-with-platform-velocity-distancejoint-or/118937",
+                source: "Press Start"
+            }
+        ];
+
+        let currentSlide = 0;
+        const cardsPerView = 1; // Number of cards visible at once
+
+        function initializeCarousel() {
+            const track = document.getElementById('carousel-track');
+            const dots = document.getElementById('carousel-dots');
+            const tutorialCount = document.getElementById('tutorial-count');
+            
+            // Update tutorial count
+            tutorialCount.textContent = tutorialLinks.length;
+            
+            // Clear existing content
+            track.innerHTML = '';
+            dots.innerHTML = '';
+            
+            // Create cards
+            tutorialLinks.forEach((tutorial, index) => {
+                // Create card
+                const card = document.createElement('div');
+                card.className = 'link-card';
+                card.innerHTML = `
+                    <h4>${tutorial.title}</h4>
+                    <p>${tutorial.description}</p>
+                    <a href="${tutorial.url}" target="_blank" rel="noopener noreferrer">
+                        🔗 ${tutorial.source || 'Visit Tutorial'} →
+                    </a>
+                `;
+                track.appendChild(card);
+                
+                // Create dot
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.onclick = () => goToSlide(index);
+                dots.appendChild(dot);
+            });
+            
+            updateCarousel();
+        }
+
+        function moveCarousel(direction) {
+            const maxSlide = tutorialLinks.length - cardsPerView;
+            currentSlide += direction;
+            
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide > maxSlide) currentSlide = maxSlide;
+            
+            updateCarousel();
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const track = document.getElementById('carousel-track');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            // Move track
+            const cardWidth = 320 + 16; // card width + gap
+            track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Update buttons
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide >= tutorialLinks.length - cardsPerView;
+        }
+
+        function showVideo(videoType) {
+            // Hide all video displays
+            const videoDisplays = document.querySelectorAll('.video-display');
+            videoDisplays.forEach(display => {
+                display.style.display = 'none';
+            });
+
+            // Remove active class from all video buttons
+            const videoButtons = document.querySelectorAll('.video-button');
+            videoButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected video and mark button as active
+            document.getElementById(`video-${videoType}`).style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab and mark button as active
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize carousel when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCarousel();
+        });
+
+        // Add scroll effect to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Accordion functionality for Development Logs
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const accordionContent = button.nextElementSibling;
+
+                button.classList.toggle('active');
+
+                if (button.classList.contains('active')) {
+                    accordionContent.style.display = 'block'; // Make it block before calculating scrollHeight
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    accordionContent.style.paddingTop = '1rem';
+                    accordionContent.style.paddingBottom = '1rem';
+                } else {
+                    accordionContent.style.maxHeight = '0';
+                    accordionContent.style.paddingTop = '0';
+                    accordionContent.style.paddingBottom = '0';
+                    accordionContent.addEventListener('transitionend', function handler() {
+                        accordionContent.style.display = 'none'; // Hide after transition
+                        accordionContent.removeEventListener('transitionend', handler);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
