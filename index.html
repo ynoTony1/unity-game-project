@@ -1028,56 +1028,69 @@
             <div id="reflection" class="tab-content">
                 <h3>Project Reflection</h3>
                 
-                <h4>Learning Journey & Key Takeaways</h4>
-                <p>This project was a significant learning experience, pushing me to independently explore and master various aspects of game development. I started with a basic understanding of programming and ended with a functional 2D platformer, a testament to self-directed learning and continuous problem-solving.</p>
-                <ul>
-                    <li><strong>Specific skills learned:</strong> I gained extensive experience in C# scripting for game logic, including player movement, animation states, and UI interactions. I learned to effectively use Unity's built-in physics system and how to manipulate it for custom jump behaviors. Furthermore, I became proficient in pixel art creation and animation using Aseprite, translating static designs into lively character and environmental sprites. I also learned to integrate and utilize Unity packages like DOTween for creating smooth, visually appealing transitions and animations.</li>
-                    <li><strong>Concepts grasped:</strong> I developed a strong understanding of the game loop and how various game elements interact within it. I delved into the intricacies of custom movement implementations versus relying solely on Unity's physics engine, understanding the trade-offs and benefits of each. The project also introduced me to basic UI/UX design principles as I built and refined the options and tutorial menus.</li>
-                    <li><strong>Unexpected discoveries:</strong> One surprising discovery was the complexity of seemingly simple features, such as implementing a robust wall climb/slide mechanic or ensuring consistent player hitbox interactions with different environments. I also realized the critical importance of regular version control and robust backup strategies after experiencing project corruption.</li>
-                </ul>
-
-                <h4>Challenges Faced & Solutions Implemented</h4>
-                <p>Throughout the development, I encountered several challenges that tested my problem-solving skills, ultimately leading to a more resilient and refined project.</p>
-                <ul>
-                    <li><strong>Major technical hurdles:</strong>
+                <h4>Reflecting on the Personal Interest Course</h4>
+                <ol>
+                    <li><strong>In general, did you like the Personal Interest course? If so, explain why. If not, explain why not.</strong>
+                        <p>Yes, I thoroughly enjoyed the Personal Interest course. It provided an unparalleled opportunity for self-directed learning, allowing me to delve deep into a topic I'm passionate about – game development. The freedom to explore specific challenges and find solutions independently was incredibly rewarding. It fostered a sense of ownership over my learning that traditional courses often don't. The course structure, which encouraged research and iterative development, was highly effective for a complex project like game creation.</p>
+                    </li>
+                    <li><strong>Did the course teach you anything about yourself that you think will be helpful after you graduate?</strong>
+                        <p>Absolutely. The course taught me the immense value of <strong>self-motivation</strong> and <strong>perseverance</strong> in the face of complex problems. There were many instances, like the project corruption or tricky physics implementations, where I had to push through frustration and independently seek solutions. This experience honed my ability to research, troubleshoot, and learn on the fly – skills that are universally applicable and will be crucial in any career path I choose after graduation.</p>
+                    </li>
+                    <li><strong>What skills did you learn in the course? Be specific. Don’t just focus on the skills relating to your specific project (for example, if you completed a music project don’t just say that you became a better musician). Think about skills like time management, self-motivation, organization, avoiding procrastination, presentation skills, long-term planning skills, etc.</strong>
+                        <p>Beyond specific Unity and C# development, this course significantly developed several vital skills:</p>
                         <ul>
-                            <li><strong>Custom Physics and Player Movement:</strong> Initially, creating a custom jump and movement system that felt responsive and natural was a significant hurdle (Week Two, Week Three). I struggled with inconsistent jump heights and awkward movements.
-                                <em>Solution:</em> I researched various platformer physics tutorials (e.g., "Improve your Platformer’s Jump (and Wall Jump) | Unity", "Math for Game Programmers: Building a Better Jump"), experimented with different force applications, and iteratively fine-tuned parameters until the movement felt fluid. I also looked into how established platformers like Celeste handle their physics.</li>
-                            <li><strong>Animation Integration:</strong> Integrating pixel art animations from Aseprite into Unity and ensuring smooth transitions between states (idle, walk, jump, dash) proved challenging (Week Four).
-                                <em>Solution:</em> I spent considerable time learning Unity's Animator component, researching best practices for 2D animation controllers, and creating new scripts to manage animation states based on player input and actions.</li>
-                            <li><strong>Project Corruption:</strong> The project corruption in the "Week of May 1, 2025" was a major setback.
-                                <em>Solution:</em> I relied heavily on my last working backup, meticulously comparing files to identify what was lost and systematically rebuilding the affected parts, particularly the UI elements and script linkages (Week of May 5 - May 9). This experience highlighted the need for more frequent and disciplined backups.</li>
-                            <li><strong>Level End Chip Functionality:</strong> Integrating the level end chip, including audio, particle effects, and scene transitions, presented multiple debugging challenges (Week of May 12 - May 16, Week of May 19 - May 23).
-                                <em>Solution:</em> I systematically debugged the issue by checking variable declarations, collider settings, and build settings. I used debug logs to confirm code execution and meticulously assigned all required components (Particle Systems, Audio Clips, UI Images) in the Unity Inspector.</li>
+                            <li><strong>Self-Directed Learning:</strong> The most prominent skill was the ability to identify a knowledge gap, research solutions, and apply new concepts independently without constant direct instruction.</li>
+                            <li><strong>Problem-Solving & Troubleshooting:</strong> I became much better at diagnosing issues (e.g., in physics, animations, or UI), breaking them down, and systematically finding fixes. The project corruption incident was a prime example of this.</li>
+                            <li><strong>Time Management & Long-Term Planning:</strong> Managing a multi-month project required breaking it into manageable weekly tasks and adhering to self-imposed deadlines, as detailed in my development logs.</li>
+                            <li><strong>Organization:</strong> Maintaining a clean Unity project, organizing assets, and structuring C# scripts for readability and maintainability were crucial. The experience with project corruption also highlighted the importance of diligent backup and version control practices.</li>
+                            <li><strong>Resourcefulness:</strong> I heavily relied on online documentation, tutorials (like those linked in the research section), and community forums to learn new techniques and solve problems, demonstrating strong research skills.</li>
+                            <li><strong>Adaptability:</strong> When initial approaches didn't work (e.g., custom physics attempts), I had to adapt my strategies and learn new methods quickly.</li>
                         </ul>
                     </li>
-                    <li><strong>Design challenges:</strong> Designing intuitive levels that gradually introduced mechanics while maintaining engagement was tricky. I drew inspiration from games like Celeste for level flow. Creating visually appealing pixel art that fit the steampunk theme and ensuring consistent scaling across different resolutions were also ongoing considerations.</li>
-                    <li><strong>How you overcame them:</strong> My primary method for overcoming challenges was iterative development, coupled with extensive research. I utilized online tutorials, Unity documentation, and community forums to understand concepts and troubleshoot issues. I broke down complex problems into smaller, manageable tasks and tested frequently. Gathering feedback, even informal, also helped refine gameplay.</li>
-                    <li><strong>What you would do differently:</strong> If I faced the project corruption again, I would implement more frequent and robust version control practices from the start, such as using Git more diligently for smaller, more frequent commits. I would also establish a clearer testing protocol earlier in the development cycle to catch bugs before they compound.</li>
-                </ul>
-
-                <h4>Successes & Accomplishments</h4>
-                <p>Despite the challenges, I achieved several key successes that I am particularly proud of, showcasing my growth as a game developer.</p>
-                <ul>
-                    <li><strong>Favorite features:</strong> I am most satisfied with the player character's movement and dash mechanics. The implementation of custom physics for the jump and the visual aftereffects for the dash (Week Five) made the character feel responsive and fun to control. The level end chip's visual and audio feedback, combined with the smooth transition using DOTween (Week of May 26 - May 30), also turned out very well.</li>
-                    <li><strong>Personal milestones:</strong> Successfully implementing the core player movement (jump, run, wall slide/climb) was a major milestone. Getting the UI systems (options menu, tutorial HUD) to function correctly after the project corruption was also a significant achievement. Creating my own pixel art assets in Aseprite and seeing them come to life in Unity was incredibly rewarding.</li>
-                    <li><strong>Meeting project goals:</strong> I successfully developed a functional 2D platformer demonstrating key game development principles and showcasing my ability to learn and apply new technologies. The project effectively demonstrates my understanding of game design, programming, and asset integration, aligning with the objectives of a personal interest course.</li>
-                </ul>
-
-                <h4>Future Improvements & Iterations</h4>
-                <p>This project serves as a strong foundation, and there are many avenues for future expansion and refinement.</p>
-                <ul>
-                    <li><strong>Next steps for the game:</strong>
-                        <ul>
-                            <li><strong>More Levels and Mechanics:</strong> I would design and implement more diverse levels, introducing new traps, enemies, and interactive environmental elements to increase gameplay variety.</li>
-                            <li><strong>Sound Design Polish:</strong> While basic audio is present, a dedicated pass for more dynamic sound effects and a more engaging background music system would significantly enhance the player experience.</li>
-                            <li><strong>Additional Player Abilities:</strong> Implementing new player abilities, such as a double jump, different types of dashes, or even basic combat mechanics, would add depth.</li>
-                            <li><strong>Main Menu and Pause Menu:</strong> Fully fleshing out a robust main menu with level selection and a pause menu with comprehensive options (beyond graphics settings) would improve usability.</li>
-                        </ul>
+                    <li><strong>What is the thing you like most about Personal Interest? Explain why.</strong>
+                        <p>What I liked most was the <strong>complete creative freedom and autonomy</strong>. Being able to pursue a game development project that genuinely interested me, from concept to execution, was incredibly motivating. It allowed me to explore my creativity without strict boundaries, experiment with different ideas, and see my personal vision come to life. This deep engagement made the learning process much more enjoyable and effective.</p>
                     </li>
-                    <li><strong>Skills to further develop:</strong> I aim to deepen my understanding of advanced C# scripting patterns for cleaner and more modular code, explore more complex animation systems, and delve into performance optimization techniques for Unity games. I also want to learn more about game analytics to better understand player behavior and further refine game design.</li>
-                    <li><strong>Refined processes:</strong> Based on this experience, I would dedicate more time to pre-production planning and prototyping, especially for core mechanics, to minimize rework. I would also seek user feedback earlier and more frequently throughout the development cycle to guide design decisions and ensure a more engaging player experience.</li>
-                </ul>
+                    <li><strong>What is the thing you like least about Personal Interest? Explain why.</strong>
+                        <p>The aspect I liked least was the <strong>isolation that sometimes came with working independently on a complex project</strong>. While self-direction is a strength, there were moments, particularly during significant technical roadblocks or the project corruption, where immediate collaborative problem-solving or a quick mentor input would have been beneficial. Relying solely on online resources meant a slower debugging process at times, which could be frustrating.</p>
+                    </li>
+                    <li><strong>Did you have a mentor to help guide you through the project? If so, talk about the relationship you formed with the mentor. Was it helpful? If not, explain why you decided not to have a mentor.</strong>
+                        <p>I did have a mentor for this project; but I decided to take a largely self-guided approach, utilizing the vast resources available online – including Unity documentation, YouTube tutorials (as listed in my research section), and developer forums. While this fostered strong self-directed learning, there were times when I just needed to send a message to get my mentor's insight and problem-solve for the more complex issues.</p>
+                    </li>
+                    <li><strong>Are you as passionate about your project topic now as you were at the start of the course? Explain why or why not.</strong>
+                        <p>Yes, if anything, my passion for game development has <strong>grown stronger</strong>. While the course presented significant challenges, overcoming them and seeing my vision materialize into a playable game was incredibly satisfying. The process of learning new skills, solving intricate problems, and iterating on design reinforced my interest. The "Future Improvements" section clearly indicates a desire to continue building upon this foundation, which speaks to sustained and even increased passion.</p>
+                    </li>
+                    <li><strong>Did you enjoy the journal and conferencing elements of the course? Why or why not?</strong>
+                        <p>I found the journal (development logs) and conferencing elements of the course to be quite valuable. The <strong>development logs forced me to regularly reflect</strong> on my progress, document challenges, and plan my next steps, which was essential for managing a long-term project. The conferencing, while potentially limited based on mentor availability, provided structured opportunities to articulate my progress and challenges, which helped in organizing my thoughts and getting external perspectives.</p>
+                    </li>
+                    <li><strong>Did you enjoy the midterm and final presentations? Why or why not?</strong>
+                        <p>I found the midterm and final presentations to be <strong>beneficial, though initially daunting</strong>. They provided a crucial opportunity to synthesize my learning and articulate my project's development journey, which reinforced my understanding. While public speaking can be nerve-wracking, the act of showcasing my work and explaining the technical aspects and design choices was ultimately rewarding, as it allowed me to demonstrate the culmination of my efforts.</p>
+                    </li>
+                    <li><strong>Did you enjoy preparing for the final display and final portfolio elements of the course? Why or why not?</strong>
+                        <p>Yes, I largely enjoyed preparing for the final display and portfolio. It felt like putting the finishing touches on a long-term endeavor. Compiling the project, documenting all the assets and development logs, and refining the presentation (like this web page!) allowed me to see the entire scope of my work and how much I had accomplished. It was a satisfying process of curating and presenting the journey and the final product.</p>
+                    </li>
+                    <li><strong>Would you like to see more student/self-directed courses offered at high school? Why or why not?</strong>
+                        <p>Absolutely, I believe more student/self-directed courses should be offered. This course allowed for a level of <strong>deep engagement and personalized learning</strong> that traditional courses often cannot provide. It empowers students to explore their unique interests, develop crucial real-world skills like independent problem-solving and project management, and fosters genuine intellectual curiosity. Such courses better prepare students for higher education and future careers by nurturing autonomy and critical thinking.</p>
+                    </li>
+                    <li><strong>In the end, do you feel you created a personal interest project that you are proud of? If so, explain what made you most proud. If not, explain why you are disappointed with the final product.</strong>
+                        <p>Yes, I am exceptionally proud of the personal interest project I created. What made me most proud is the <strong>functional and polished feel of the player character's movement and dash mechanics</strong>. Getting the custom physics for the jump and the fluid visual aftereffects to work seamlessly was a significant technical and aesthetic achievement. Beyond that, overcoming the major setback of project corruption and successfully rebuilding and completing the UI systems, as well as the level end chip, fills me with immense pride. It demonstrates not just technical skill, but resilience and dedication.</p>
+                    </li>
+                    <li><strong>Did you find it easy or difficult to meet 4 of the 6 Global Competencies with your project?</strong>
+                        <p>I found it relatively <strong>easy to meet the Global Competencies</strong> with this project because game development inherently touches upon many of them. For instance, designing unique mechanics and visuals directly addressed <strong>Creativity & Innovation</strong>. Analyzing design problems and finding effective solutions honed my <strong>Critical Thinking</strong>. Documenting the process and presenting my work developed my <strong>Communication</strong> skills. My reliance on online tutorials and independent learning strongly demonstrated <strong>Self-Directed Learning</strong>. The process of integrating feedback and utilizing community resources, even informally, also touched upon <strong>Collaboration</strong>. Finally, responsible use of Unity and other software tools aligned with <strong>Digital Citizenship</strong>. The nature of the project provided natural avenues to fulfill these competencies.</p>
+                    </li>
+                    <li><strong>What advice would you give to students who are planning to take Personal Interest next year?</strong>
+                        <p>My advice would be:
+                            <ol>
+                                <li><strong>Choose a topic you are genuinely passionate about:</strong> Your interest will be your biggest motivator when challenges arise.</li>
+                                <li><strong>Start with small, achievable goals:</strong> Don't try to build a massive, complex project from day one. Break it down into minimum viable features.</li>
+                                <li><strong>Embrace online resources:</strong> YouTube, official documentation, and forums are your best friends. Learn how to effectively search for solutions.</li>
+                                <li><strong>Learn about version control (e.g., Git) and use it religiously:</strong> Save yourself from future heartbreak by backing up your work frequently and intelligently.</li>
+                                <li><strong>Don't be afraid to fail and iterate:</strong> Many initial attempts won't work perfectly. That's part of the learning process.</li>
+                                <li><strong>Document your journey:</strong> The development logs might seem tedious, but they are invaluable for reflection and future reference.</li>
+                                <li><strong>Manage your time consistently:</strong> Little progress every day or week is better than trying to cram everything at the last minute.</li>
+                            </ol>
+                        </p>
+                    </li>
+                </ol>
             </div>
         </section>
     </main>
